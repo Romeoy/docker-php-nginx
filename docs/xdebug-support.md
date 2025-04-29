@@ -18,20 +18,12 @@ xdebug.client_host=host.docker.internal
 xdebug.client_port=9003
 ```
 
-Create a new image with the following `Dockerfile`
+Add the following command into the Dockerfile.
 
 ```Dockerfile
-FROM trafex/php-nginx:latest
-
-# Temporary switch to root
-USER root
-
 # Install xdebug
-RUN apk add --no-cache php84-pecl-xdebug
+RUN apk add --no-cache php${PHP_VERSION}-pecl-xdebug
 
 # Add configuration
 COPY xdebug.ini ${PHP_INI_DIR}/conf.d/xdebug.ini
-
-# Switch back to non-root user
-USER nobody
 ```

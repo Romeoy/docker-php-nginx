@@ -32,7 +32,7 @@ server {
     listen [::]:443 ssl;
     listen 443 ssl;
     server_name localhost;
-    root /var/www/html/public;
+    root /var/www/project/public;
 
     ssl_certificate /etc/nginx/ssl/default.crt;
     ssl_certificate_key /etc/nginx/ssl/default.key;
@@ -48,9 +48,9 @@ If you use docker-compose here is an example:
     build: ./api
     networks: [ backend ]
     ports: [ "443:443" ]
-    working_dir: /var/www/html
+    working_dir: /var/www/project
     volumes:
-      - ./api:/var/www/html
+      - ./api:/var/www/project
       - ./api/nginx.conf:/etc/nginx/conf.d/default.conf
     restart: on-failure
 
